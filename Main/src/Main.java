@@ -165,7 +165,7 @@ class MaintenanceSystem extends Vehicle implements MaintenanceActivity, Maintena
 
 public class Main {
     public static void main(String[] args) {
-        // Input vehicle details
+        // Detail of the  vehicle 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter vehicle ID:");
         String vehicleId = scanner.nextLine();
@@ -175,7 +175,6 @@ public class Main {
         // Instantiate MaintenanceSystem with vehicle details
         MaintenanceSystem maintenanceSystem = new MaintenanceSystem(vehicleId, mileage);
 
-        // Example usage
         System.out.println("Enter maintenance description:");
         String description = scanner.nextLine();
         System.out.println("Enter cost:");
@@ -196,7 +195,6 @@ public class Main {
         maintenanceSystem.trackWarrantyInformation(vehicleId);
         maintenanceSystem.trackRepairStatus(vehicleId);
         
-        // Close scanner
         scanner.close();
     }
 }
