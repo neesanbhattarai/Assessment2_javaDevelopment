@@ -136,7 +136,20 @@ class MaintenanceSystem extends Vehicle implements MaintenanceActivity, Maintena
         System.out.println("Vehicle mileage tracked for " + vehicleId + ": " + mileage);
     }
 
-    @Override
+
+     @Override
+    public void generateMaintenanceReport(String vehicleId) {
+        // Get repair status for the vehicle
+        List<String> repairStatus = repairStatusMap.getOrDefault(vehicleId, new ArrayList<>());
+        
+        // Print maintenance report along with repair status
+        System.out.println("Maintenance report for vehicle " + vehicleId + ":");
+        System.out.println("Repair Status: " + repairStatus);
+    }
+
+  
+
+     @Override
 public void manageMaintenanceSchedule(String vehicleId, Date scheduleDate) {
     // Manage maintenance schedule
     maintenanceScheduleMap.put(vehicleId, scheduleDate);
@@ -148,13 +161,6 @@ public void manageMaintenanceSchedule(String vehicleId, Date scheduleDate) {
     // Print next maintenance date
     System.out.println("Next maintenance for vehicle " + vehicleId + " should be scheduled when the mileage reaches: " + nextMaintenanceMileage);
 }
-
-    @Override
-    public void manageMaintenanceSchedule(String vehicleId, Date scheduleDate) {
-        // Manage maintenance schedule
-        maintenanceScheduleMap.put(vehicleId, scheduleDate);
-        System.out.println("Maintenance schedule managed for vehicle " + vehicleId);
-    }
 
     @Override
     public void trackWarrantyInformation(String vehicleId) {
