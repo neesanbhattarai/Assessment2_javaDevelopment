@@ -37,17 +37,8 @@ interface MaintenanceReportGenerator {
 }
 
 // Interface for managing maintenance schedule
-@Override
-public void manageMaintenanceSchedule(String vehicleId, Date scheduleDate) {
-    // Manage maintenance schedule
-    maintenanceScheduleMap.put(vehicleId, scheduleDate);
-    
-    // Calculate next maintenance date based on initial mileage + 3000
-    double initialMileage = mileageMap.getOrDefault(vehicleId, 0.0);
-    double nextMaintenanceMileage = initialMileage + 3000.0;
-    
-    // Print next maintenance date
-    System.out.println("Next maintenance for vehicle " + vehicleId + " should be scheduled when the mileage reaches: " + nextMaintenanceMileage);
+interface MaintenanceScheduleManager {
+    void manageMaintenanceSchedule(String vehicleId, Date scheduleDate);
 }
 
 // Interface for tracking warranty information
@@ -146,10 +137,17 @@ class MaintenanceSystem extends Vehicle implements MaintenanceActivity, Maintena
     }
 
     @Override
-    public void generateMaintenanceReport(String vehicleId) {
-        // Generate maintenance reports
-        System.out.println("Generating maintenance report for vehicle " + vehicleId);
-    }
+public void manageMaintenanceSchedule(String vehicleId, Date scheduleDate) {
+    // Manage maintenance schedule
+    maintenanceScheduleMap.put(vehicleId, scheduleDate);
+    
+    // Calculate next maintenance date based on initial mileage + 3000
+    double initialMileage = mileageMap.getOrDefault(vehicleId, 0.0);
+    double nextMaintenanceMileage = initialMileage + 3000.0;
+    
+    // Print next maintenance date
+    System.out.println("Next maintenance for vehicle " + vehicleId + " should be scheduled when the mileage reaches: " + nextMaintenanceMileage);
+}
 
     @Override
     public void manageMaintenanceSchedule(String vehicleId, Date scheduleDate) {
